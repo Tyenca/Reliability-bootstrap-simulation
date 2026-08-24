@@ -1,6 +1,6 @@
 # Reliability of the Incremental Cost-Effectiveness Ratio (ICER)
 
-> **Note:** `icer_reliability_bootstrap_simulation.py` was originally written and run as a Google Colab notebook, then exported to a plain `.py` file for this repo. Because of that, some code may behave unexpectedly or throw an error if run outside Colab (e.g. file upload steps, missing runtime state). For the full, working experience — including outputs and plots — please follow the notebook link below.
+> **Note:** `icer_reliability_bootstrap_simulation.py` was originally written and run as a Google Colab notebook, then exported to a plain `.py` file for this repo. Because of that, some code may behave unexpectedly or throw an error if run outside Colab (e.g. file upload steps, missing runtime state). For the full, working experience (including outputs and plots) please follow the notebook link below.
 >
 > 🔗 [Open the original Colab notebook](https://colab.research.google.com/drive/1wGhpWslDC7Np6D07TZ_cePLIXlIoJwg8)
 
