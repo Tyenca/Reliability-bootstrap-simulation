@@ -6,19 +6,25 @@
 
 ## What this is
 
-A coursework assignment quantifying the cost-effectiveness of a cancer treatment trial, and — more importantly — how *reliable* that single-number estimate actually is. Based on a randomized trial (409 patients) comparing standard chemotherapy vs. standard chemotherapy plus osimertinib, on 1-year survival and total health-care costs.
+A coursework assignment quantifying the cost-effectiveness of a cancer treatment trial, and, more importantly, how *reliable* that single number estimate actually is. Based on a randomized trial (409 patients) comparing standard chemotherapy vs. standard chemotherapy plus osimertinib, on 1-year survival and total health-care costs.
+
+## Repo contents
+
+- **`icer_reliability_bootstrap_simulation.py`**: the full analysis code (see below).
+- **`icer_reliability_presentation.pdf`**: the final presentation deliverable, reporting the observed ICER alongside the delta-method, bootstrap, and parametric simulation reliability estimates, with a plain language conclusion.
+- **`costefficacydata.csv`**: the trial data.
 
 ## What I did
 
 - **Point estimate**: calculated the event (survival) proportions and mean costs per treatment arm, and computed the Incremental Cost-Effectiveness Ratio (ICER = cost difference / effect difference).
-- **Delta-method confidence interval**: derived an asymptotic 95% confidence interval for the ICER analytically, propagating variance through the ratio via a first-order Taylor expansion, including the covariance term between costs and outcome within each arm (rather than assuming independence).
+- **Delta-method confidence interval**: derived an asymptotic 95% confidence interval for the ICER analytically, propagating variance through the ratio via a first order Taylor expansion, including the covariance term between costs and outcome within each arm (rather than assuming independence).
 - **Bootstrap confidence interval**: resampled the trial data to build an empirical distribution of the ICER, checked it for bias, and applied a bias-correction method. Visualized the bootstrap estimates of cost-difference vs. effect-difference on a cost-effectiveness plane, and quantified how many fell in each of the four quadrants (dominant, dominated, and the two ambiguous quadrants).
 - **Parametric distribution fitting**: fit and compared several candidate distributions (normal, logistic, Weibull, gamma, lognormal) to the cost data in each treatment arm, using QQ-plots to assess fit.
-- **Monte Carlo simulation**: simulated 1,000 trials of the same size by drawing costs from the fitted distributions and events from binomial distributions, recomputing the ICER each time, and compared this simulated sampling distribution against the bootstrap distribution (center, spread, and shape).
+- **Monte Carlo simulation**:  simulated 1,000 trials of the same size by drawing costs from the fitted distributions and events from binomial distributions, recomputing the ICER each time, and compared this simulated sampling distribution against the bootstrap distribution (center, spread, and shape).
 
 ## Key finding
 
-The bootstrap and simulated ICER distributions had similar central estimates but the simulation showed a noticeably wider spread: suggesting the fitted parametric distributions (lognormal for costs) don't fully capture the tail behavior of the real cost data, and that the non-parametric bootstrap is likely the more trustworthy reliability estimate here.
+All three approaches (bootstrap, and simulation from both lognormal and gamma cost models) agreed the new treatment is more effective but substantially more costly than standard care. However, every method also produced a very wide confidence interval spanning both cost-effective and non-cost-effective regions, so the final conclusion was that **the estimated ICER is not statistically reliable** given the trial's sample size and cost variability, and no confident claim could be made about whether the new treatment is actually cost-effective.
 
 ## Tools
 
